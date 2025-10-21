@@ -18,9 +18,8 @@ fun getLocalLanIp(): String? =
         }?.hostAddress
 
 fun getLatestScreenshot(): File? {
-    val dir = File(
-        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Screenshots")
+    return File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Screenshots")
 //        Environment.getExternalStorageDirectory(), "ScreenShot")
-    return dir.listFiles { it -> it.isFile && it.name.endsWith(".png", true) || it.name.endsWith(".jpg", true) }
+        .listFiles { it -> it.isFile && !it.isHidden && (it.name.endsWith(".png", true) || it.name.endsWith(".jpg", true)) }
         ?.maxByOrNull { it.lastModified() }
 }
