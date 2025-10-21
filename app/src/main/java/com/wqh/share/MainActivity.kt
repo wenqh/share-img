@@ -6,8 +6,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 
 class MainActivity : Activity() {
 
@@ -15,11 +13,10 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
 
         val permission = Manifest.permission.READ_MEDIA_IMAGES
-        if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(permission), 100)
-            return
+        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(permission), 100)
         }
-
+        
         startService(Intent(this, ShareImgService::class.java))
 
         val ip = getLocalLanIp() ?: "IP获取失败"
