@@ -17,7 +17,7 @@ class MainActivity : Activity() {
             requestPermissions(arrayOf(permission), 100)
         }
         
-        startService(Intent(this, ShareImgService::class.java))
+        startService(Intent(this, ImgShareService::class.java))
 
         val ip = getLocalLanIp() ?: "IP获取失败"
         Toast.makeText(applicationContext, "服务已启动：$ip:8080", Toast.LENGTH_LONG).show()

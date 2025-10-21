@@ -7,7 +7,7 @@ import android.os.IBinder
 import android.os.Looper
 import android.widget.Toast
 
-class ShareImgService : Service() {
+class ImgShareService : Service() {
 
     override fun onCreate() {
         super.onCreate()
